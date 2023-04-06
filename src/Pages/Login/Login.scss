@@ -1,10 +1,81 @@
+@import '/src/Styles/Partials/variables';
+
+
 
 .login-page{
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 20rem;
+    margin: 20rem 0;
 }
 .login-component{    
+    display: flex;
+
+    flex-direction: column;
+    align-items: end;
     width: 35vw;
+    height: 100%;
+}
+.login-form{ 
+    border-radius: 5rem;
+    width: 100%;
+    height: 100%;   
+    color: $primary-color;
+    background-color: white;
+    &__title
+    {
+        margin: 2rem 1rem 1rem;
+    }
+    &__input-div{
+        color:  #7F7F7F;
+        font-weight: bold;
+        margin: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    &__input{
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 0.0675rem solid grey;
+        width: 70%;
+        transition: 0.7s;
+        &:focus{
+            width: 90%;
+            outline: none;
+            border-bottom: 0.125rem solid $primary-color;
+        }
+    }
+    &__text{
+        font-size: 0.8rem;
+        font-style: italic;
+        margin: 1rem;
+    }
+
+    &__button{
+        margin: 1rem;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+        width: 30%;
+        border: 0.125rem solid black;
+        color: $secondary-color;
+        background-color: white;
+        font-weight: 500;
+        transition: 0.7s;
+      
+      
+        &:hover{
+            color:white;
+           
+            transform: translate(-0.25rem,-0.25rem);
+            background: $primary-color;
+            box-shadow: 0.25rem 0.25rem black;
+        }
+        &:active {
+            transform: translate(0);
+            box-shadow: none;
+          }
+    }
 }

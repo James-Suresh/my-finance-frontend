@@ -4,20 +4,25 @@ import Paper from '@mui/material/Paper';
 const Login = () => {
     return (
         <div className="login-page">
-        <Paper className="login-component" elevation={3}>
+        <Paper  className="login-component" elevation={3}>
         <form className="login-form">
             <h3 className="login-form__title">Login</h3>
-            <div className="login-form__input">
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" />
+            <div className="login-form__input-div">
+                <label htmlFor="email">EMAIL</label>
+                <input className='login-form__input' type="email" name="email" id="email" />
             </div>      
     
-            <div className="login-form__input"> 
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" id="password" />
+            <div className="login-form__input-div"> 
+                <label htmlFor="password">PASSWORD</label>
+                <input className='login-form__input' type="password" name="password" id="password" />
             </div>      
             <button className="login-form__button">Login</button>
+            <p className="login-form__text">Don't have an account? <a href="/register">Register</a></p>
+            <p className="login-form__text">Forgot your password? <a href="/forgot-password">Reset</a></p>
         </form>  
+        <div className="login-form__input-div">
+           
+        </div>
         </Paper>
         </div>
     );
