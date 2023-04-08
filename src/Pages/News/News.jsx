@@ -12,8 +12,8 @@ const News = () => {
         url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/list',
         params: {category: 'generalnews', region: 'US'},
         headers: {
-          'X-RapidAPI-Key': '75314fef5emsh7d6d2517a00cb45p109bfbjsn4ab2c57e96a6',
-          'X-RapidAPI-Host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
+          'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
+          'X-RapidAPI-Host': process.env.REACT_APP_API_HOST
         }
       };
       
