@@ -3,7 +3,11 @@
   display: flex;
   flex-direction: column;
   background-image: url('./Assets/Images/herringbone.webp');
+  width: 100%;
 }
 label{
   font-size: 10px;
+}
+a{
+  text-decoration: none;
 }

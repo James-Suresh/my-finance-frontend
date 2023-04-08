@@ -1,24 +1,26 @@
-import Paper from '@mui/material/Paper';
+import Card from '../../Components/Card/Card';
+import {Animated} from "react-animated-css";
 import { useEffect, useState } from 'react';
 import './News.scss'
 import axios from 'axios';
+import Loading from '../../Components/Loading/Loading';
 const News = () => {
 
     const [stories, setStories] = useState(null)
     const options = {
         method: 'GET',
-        url: 'https://bloomberg-market-and-financial-news.p.rapidapi.com/stories/list',
-        params: {template: 'CURRENCY', id: 'usdjpy'},
+        url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/list',
+        params: {category: 'generalnews', region: 'US'},
         headers: {
           'X-RapidAPI-Key': '75314fef5emsh7d6d2517a00cb45p109bfbjsn4ab2c57e96a6',
-          'X-RapidAPI-Host': 'bloomberg-market-and-financial-news.p.rapidapi.com'
+          'X-RapidAPI-Host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
         }
       };
       
     useEffect(() => {
         axios.request(options).then(function (response) {
-            console.log(response.data.stories);
-            setStories(response.data.stories)
+            console.log(response.data);
+            setStories(response.data.items.result)
         }).catch(function (error) {
             console.error(error);
         });
@@ -26,23 +28,21 @@ const News = () => {
 if(stories)    
     return (
         <div className='news'>
-            <h1>News</h1>
-            <div className='news'>
+        
+            <h1 className='news__title'>News</h1>
+       
             <ul className='news__cards'>
-                {stories.map((story)=>{
+                {stories.map((story,index)=>{
                 return (
-                        <a href={story.shortURL}>
-                            <li className='news__card'>
-                            <Paper elevation={3}>
-                            <h3>{story.title}</h3>
-                            <img src={story.thumbnailImage}></img>
-                            </Paper>
-                            </li>
+                        <a href={story.link}>
+                            <Animated animationIn="fadeInUp" animationInDelay = {500*index} animationOut="fadeOut" isVisible={true}>
+                                <Card title ={story.title} img= {story.main_image.original_url} body={story.summary}/>
+                            </Animated>
                         </a>
                  )
             })}
             </ul>
-            </div>
+        
 
       
             
@@ -50,6 +50,10 @@ if(stories)
             
         </div>
     );
+    else{
+        return(<Loading/>)
+       
+    }
 }
 
 export default News;

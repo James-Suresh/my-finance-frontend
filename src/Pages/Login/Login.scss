@@ -1,7 +1,17 @@
 @import '/src/Styles/Partials/variables';
 
 
-
+@keyframes slide-in{
+    from {
+        transform: translateY(100%);
+        opacity: 0%;
+      }
+    
+      to {
+        transform: translateY(0%);
+        opacity: 100%;
+      }
+}
 .login-page{
     display: flex;
     justify-content: center;
@@ -9,12 +19,15 @@
     margin: 20rem 0;
 }
 .login-component{    
+
     display: flex;
 
     flex-direction: column;
     align-items: end;
     width: 35vw;
     height: 100%;
+    animation:  slide-in 2s;
+
 }
 .login-form{ 
     border-radius: 5rem;

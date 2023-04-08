@@ -1,5 +1,18 @@
 @import '/src/Styles/Partials/variables';
 .news{
+    @media (min-width: 65rem) {
+        margin: auto;
+        width: 65rem;
+        }
+    
+    display: flex;
+    flex-direction: column;
+
+    &__title{
+        margin: 0 0 2rem;
+    }
+    align-items: start;
+    padding: 1rem 2rem;
     &__cards{
         display: flex;
         flex-wrap: wrap;
@@ -9,7 +22,10 @@
         text-decoration: none;
         
     }
+    &__cards{
+    }
     &__card{
+        
         list-style-type: none;
     }
 }

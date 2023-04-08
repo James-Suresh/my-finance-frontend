@@ -8,7 +8,7 @@ import Header from './Components/Header/Header';
 function App() {
   return (
   <div className="App">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
     <BrowserRouter>
     <Header>
       

@@ -1,0 +1,49 @@
+@import '/src/Styles/Partials/variables';
+
+.card{
+    @media (min-width: 1040px) {
+        width: 980px;
+        }
+    flex-grow: 1;
+    display: flex;
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: 0.7s;
+    
+    
+  
+    
+    &__title{
+        color: $primary-color;
+        padding: 0 0 0.4rem;
+        text-align: start;
+    }
+    &__body{
+        text-align: start;
+        flex-grow: 1;
+        min-width: 100%;
+        color: $secondary-color;
+    }
+    &__body-div{
+        
+        display: flex;
+        width: 100%;
+    }
+    &__img{
+        
+       
+        height: 100%;
+        object-fit: cover;
+    }
+    &__img-div{
+        height: 150px;
+        width: auto;
+    }
+    &:hover{
+        transform: scale(1.05);
+        
+    }
+}
