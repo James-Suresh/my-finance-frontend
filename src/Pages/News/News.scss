@@ -1,21 +1,18 @@
 @import '/src/Styles/Partials/variables';
 .news{
-    @media (min-width: 65rem) {
-        margin: 2rem auto;
-        width: 65rem;
-        }
+    
     width: 100%;
     margin: 2rem 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     &__title{
         width: 100%;
-        text-align: start;
+        text-align: center;
         margin: 0 0 2rem;
         color: $primary-color;
     }
-    align-items: start;
     &__cards{
         display: flex;
         flex-wrap: wrap;
@@ -28,6 +25,7 @@
     &__cards{
     display: flex;
     flex-direction: column;
+    align-items: center;
     max-width: 100%;
     min-width: 0;
     }
@@ -36,4 +34,16 @@
         min-width: 0;
         list-style-type: none;
     }
+    @media (min-width: 65rem) {
+        margin: 2rem auto;
+        width: 65rem;
+        align-items: start;
+        &__title{
+            text-align: start;
+        }
+        &__cards{
+            align-items: start;
+        }
+
+        }
 }

@@ -14,10 +14,7 @@
 }
 .login{
 
-        @media (min-width: 65rem) {
-            margin:2rem auto;
-            width: 65rem;
-            }
+      
         width: 100%;
         margin: 2rem 0;
         display: flex;
@@ -51,7 +48,16 @@
     
     animation:  slide-in 2s;
 
+    
 }
+@media (min-width: 65rem) {
+    margin: 2rem auto;
+    width: 65rem;
+    align-items: start;
+    &__title{
+        text-align: start;
+    }
+    }
 }
 .login-form{ 
     border-radius: 5rem;
@@ -116,4 +122,6 @@
             box-shadow: none;
           }
     }
+
+   
 }
