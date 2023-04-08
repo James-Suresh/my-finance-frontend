@@ -36,7 +36,7 @@ if(stories)
                 return (
                         <a href={story.link}>
                             <Animated animationIn="fadeInUp" animationInDelay = {500*index} animationOut="fadeOut" isVisible={true}>
-                                <Card title ={story.title} img= {story.main_image.original_url} body={story.summary}/>
+                                <Card title ={story.title} img= {story.main_image?story.main_image.original_url:null} body={story.summary}/>
                             </Animated>
                         </a>
                  )
