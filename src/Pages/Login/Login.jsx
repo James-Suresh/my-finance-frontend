@@ -3,10 +3,11 @@ import Paper from '@mui/material/Paper';
 
 const Login = () => {
     return (
-        <div className="login-page">
-        <Paper  className="login-component" elevation={3}>
+        <div className="login">
+            <h1 className='login__title'>Login</h1>
+        <Paper  className="login__component" elevation={3}>
         <form className="login-form">
-            <h3 className="login-form__title">Login</h3>
+            <h3 className="login-form__title">Welcome back,</h3>
             <div className="login-form__input-div">
                 <label htmlFor="email">EMAIL</label>
                 <input className='login-form__input' type="email" name="email" id="email" />

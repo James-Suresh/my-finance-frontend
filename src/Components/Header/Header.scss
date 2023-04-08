@@ -15,7 +15,7 @@
         color: white;
         flex-direction: row;
         gap: 0.5rem;
-  
+        overflow: visible;
         list-style-type: none;
         height: 2rem;
         align-items: center;
@@ -41,7 +41,10 @@
         margin-top: 1rem;
         display: flex;
         width: 8rem;
+        height: 100%;
         align-items: center;
+        
+        overflow: visible;
     }
     &__list-img{
         width: 100%;

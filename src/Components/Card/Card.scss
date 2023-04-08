@@ -4,46 +4,75 @@
     @media (min-width: 1040px) {
         width: 980px;
         }
-    flex-grow: 1;
     display: flex;
     width: 100%;
     background-color: whitesmoke;
     padding: 1rem;
     gap: 1rem;
+  
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: 0.7s;
-    
+
     
   
     
     &__title{
+        word-wrap: normal;
         color: $primary-color;
         padding: 0 0 0.4rem;
         text-align: start;
     }
     &__body{
         text-align: start;
-        flex-grow: 1;
-        min-width: 100%;
         color: $secondary-color;
     }
     &__body-div{
         
         display: flex;
-        width: 100%;
+        width: 70%;
     }
     &__img{
         
-       
-        height: 100%;
-        object-fit: cover;
+        object-fit:cover;
+        width: 100%;
     }
     &__img-div{
-        height: 150px;
-        width: auto;
+        display: flex;
+        align-items: center;
+     
+        min-width: 30%;
+        max-width: 30%;
+       
+        background-color: black;
     }
     &:hover{
         transform: scale(1.05);
         
     }
+    
+     @media (max-width: 768px) {
+        flex-direction: column;
+        width:50vw;
+        min-width: 0;
+        &__title{
+            word-wrap: break-word;
+        }
+        &__body-div{
+            display: none;
+        }
+        &__img{
+        
+            object-fit: fill;
+            overflow: visible;
+            max-width: 100%;
+        }
+        &__img-div{
+            display: flex;
+            align-items: center;
+            width: 100%;
+           max-width: 100%;
+            background-color: black;
+        }
+    }
+        
 }
