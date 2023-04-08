@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
+import './Header.scss'
 const Header = () => {
     return (
-        <nav>
-            <ul>
+        <nav className="nav">
+            <ul className="nav__list">
                 <li>
-                    <Link to ="/login">Login</Link>
+                    <Link className="nav__list--item" to ="/login">Login</Link>
                 </li>
                 <li>        
                     <Link to="/register">Register</Link>

@@ -1,0 +1,11 @@
+@import '/src/Styles/Partials/variables';
+.nav{
+    width: 100%;
+    display: flex;
+    &__list{
+        display: flex;
+        flex-direction: row;
+        gap: 2 rem;
+        list-style-type: none;
+    }
+}

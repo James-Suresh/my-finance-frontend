@@ -1,0 +1,15 @@
+@import '/src/Styles/Partials/variables';
+.news{
+    &__cards{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 1rem;
+        list-style-type: none;
+        text-decoration: none;
+        
+    }
+    &__card{
+        list-style-type: none;
+    }
+}
