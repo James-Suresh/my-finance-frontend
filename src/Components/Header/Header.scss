@@ -1,7 +1,12 @@
 @import '/src/Styles/Partials/variables';
 .nav{
+    position: sticky;
+    top: 0;
+    z-index: 1;
     background-color: $primary-color;
+    padding: 0 2rem;
     width: 100%;
+    overflow: hidden;
     height: 4rem;
     display: flex;
     align-items: center;
@@ -12,6 +17,7 @@
             width: 68rem;
             }
         display: flex;
+
         color: white;
         flex-direction: row;
         gap: 0.5rem;
@@ -30,6 +36,14 @@
             background-color: white;
             color: gray;
             transition: 0.7s;
+            height: 2rem;
+            
+            
+           
+        }
+        &:active{
+            background-color: white;
+            color: gray;
             height: 2rem;
             
             

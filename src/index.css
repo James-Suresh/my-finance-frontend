@@ -11,6 +11,7 @@
 }
 body{
   width: 100%;
+  background-image: url('./Assets/Images/herringbone.webp');
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
