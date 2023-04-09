@@ -168,15 +168,16 @@ if(data&&stockInfo&&prevStockInfo)
                   <div className='stocks__card'>
                     <h3 className='stocks__card-title'>Market Cap</h3>
                     <p className='stocks__card-body'>$
-                    <CountUp start={prevStockInfo.marketCap.raw} end={stockInfo.marketCap.raw} />
+                    <CountUp start={prevStockInfo.marketCap.raw} end={stockInfo.marketCap.raw} />B
                     </p>
                 </div>
         
                 <div className='stocks__card'>
-                    <h3 className='stocks__card-title'>Regular Market Change (%)</h3>
+                    <h3 className='stocks__card-title'>Regular Market Change</h3>
                     <p className={(stockInfo.regularMarketChangePercent.fmt.charAt(0)==="-")?"stocks__card--neg":"stocks__card--pos"}>
                     
                     <CountUp decimals={2} start={prevStockInfo.regularMarketChangePercent.raw} end={stockInfo.regularMarketChangePercent.raw} />
+                    %
                     </p>
                 </div>
               
