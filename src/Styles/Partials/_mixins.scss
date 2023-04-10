@@ -3,3 +3,18 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: 0.7s;
 }
+
+@mixin title{
+    width: 100%;
+    text-align: center;
+    margin: 0 0 2rem;
+    color: $secondary-color;
+    @media (min-width: 65rem) {
+          text-align: start;
+        }   
+}
+@mixin desktop-wrapper{
+    margin: 2rem auto;
+        width:980px;
+        align-items: start;
+}

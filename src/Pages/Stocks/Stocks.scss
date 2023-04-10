@@ -10,6 +10,7 @@
     flex-direction: column;
     align-items: center;
     
+    
     &__dashboard{
         align-items: center;
         display: flex;
@@ -24,8 +25,9 @@
         height: 40vh;
         border-radius: 0.25rem;
         padding: 2rem;
-        @include card-component;
         
+        @include card-component;
+
 
     }
     &__list{
@@ -47,11 +49,13 @@
         outline: none;
         border: none;
         display: flex;
+
         align-items: center;
         flex-direction: column;
         list-style-type: none;
         overflow: visible;
         background-color: transparent;
+        
     }
     &__list-item{
         width: 100%;
@@ -59,7 +63,7 @@
         border-bottom: 0.0675rem solid $platinum;
         background-color: white;
         color: $primary-color;
-        
+        @include card-component;
 
       
         &:hover{
@@ -69,7 +73,7 @@
             cursor: pointer;
             border-bottom: none;
             transform: perspective(10px) rotateX(1deg);
-  
+            box-shadow: none;
             box-shadow: none;
        
         }
@@ -111,7 +115,10 @@
             
            
         }
-        
+        &:hover{
+            transform: scale(1.05);
+            cursor:default
+        }
         
     }
     &__card-body{
@@ -122,19 +129,10 @@
         padding: 0 0 0.25rem;
     }
     &__title{
-        width: 100%;
-        text-align: center;
-        margin: 0 0 2rem;
-        color: $primary-color;
+        @include title;
     }
     @media (min-width: 65rem) {
-        margin: 2rem auto;
-        
-        width:980px;
-        align-items: start;
-        &__title{
-            text-align: start;
-        }   
+       @include desktop-wrapper;
         &__details{
             flex-direction:row;
             gap: 1rem;

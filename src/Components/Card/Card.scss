@@ -4,6 +4,8 @@
     @media (min-width: 1040px) {
         width: 980px;
         }
+        
+
     display: flex;
     width: 100%;
     background-color: whitesmoke;
@@ -52,7 +54,7 @@
     
      @media (max-width: 768px) {
         flex-direction: column;
-        width:50vw;
+        width:80vw;
         min-width: 0;
         &__title{
             word-wrap: break-word;

@@ -1,4 +1,6 @@
 @import '/src/Styles/Partials/variables';
+@import '/src/Styles/Partials/mixins';
+
 
 
 @keyframes slide-in{
@@ -28,16 +30,14 @@
     width: 100%;
     margin: 2rem 0;
     &__title{
-        width: 100%;
-        text-align: center;
-        margin: 0 0 2rem;
-        color: $primary-color;
+      @include title;
     }
 
 &__component{    
 
     display: flex;
-
+    @include card-component;
+    border-radius: 0.25rem;
     flex-direction: column;
     align-items: end;
     width: 80vw;
@@ -51,23 +51,22 @@
     
 }
 @media (min-width: 65rem) {
-    margin: 2rem auto;
-    width: 980px;
-    align-items: start;
-    &__title{
-        text-align: start;
-    }
+   @include desktop-wrapper;
     }
 }
 .login-form{ 
-    border-radius: 5rem;
+    padding: 2rem 0;
     width: 100%;
     height: 100%;   
     color: $primary-color;
     background-color: white;
+    a{
+        color: blue;
+    }
     &__title
     {
-        margin: 2rem 1rem 1rem;
+        color: #7F7F7F;
+        margin: 1rem;
     }
     &__input-div{
         color:  #7F7F7F;

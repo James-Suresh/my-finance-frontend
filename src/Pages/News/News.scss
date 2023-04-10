@@ -1,4 +1,6 @@
 @import '/src/Styles/Partials/variables';
+@import '/src/Styles/Partials/mixins';
+
 .news{
     
     width: 100%;
@@ -8,11 +10,9 @@
     align-items: center;
 
     &__title{
-        width: 100%;
-        text-align: center;
-        margin: 0 0 2rem;
-        color: $primary-color;
+       @include title;
     }
+    
     &__cards{
         display: flex;
         flex-wrap: wrap;
@@ -35,12 +35,7 @@
         list-style-type: none;
     }
     @media (min-width: 65rem) {
-        margin: 2rem auto;
-        width: 980px;
-        align-items: start;
-        &__title{
-            text-align: start;
-        }
+       @include desktop-wrapper;
         &__cards{
             align-items: start;
         }

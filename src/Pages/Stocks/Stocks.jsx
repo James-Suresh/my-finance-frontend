@@ -89,10 +89,10 @@ if(data&&stockInfo&&prevStockInfo)
       }
   />
                             <Tooltip labelFormatter={value => {
-                                return `Date: ${value}`;
+                                return `Date : ${value}`;
                             }}
                             formatter={value => {
-                                return `$ ${value}`;
+                                return `$${value}`;
                             }}
                             />
                             <Legend />
