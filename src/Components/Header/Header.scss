@@ -28,6 +28,7 @@
     }
     &__list-item{
         display: flex;
+        font-weight: 500;
         border-radius:0.25rem;      
         width: 5rem;
         align-items: center;
@@ -41,7 +42,7 @@
             
            
         }
-        &:active{
+        &--selected{
             background-color: white;
             color: gray;
             height: 2rem;

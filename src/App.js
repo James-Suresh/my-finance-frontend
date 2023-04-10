@@ -2,7 +2,7 @@
 import logo from './logo.svg';
 import './App.scss';
 import Login from './Pages/Login/Login';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import News from './Pages/News/News';
 import Header from './Components/Header/Header';
 import Stocks from './Pages/Stocks/Stocks';
@@ -23,7 +23,7 @@ function App() {
     <Routes>
       <Route key={"/login"} path='/login' element ={<Login/>}/>
       <Route key={"/news"} path='/news' element = {<News/>}/>
-      <Route key={"/home"} path='/' element = {<News/>}/>
+      <Route key={"/home"} path='/' element = {<Navigate to='/news' />}/>
       <Route key={"/stocks"} path='/stocks' element = {<Stocks/>}/>
     </Routes>
     </AnimatePresence>
