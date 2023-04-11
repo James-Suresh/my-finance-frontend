@@ -20,7 +20,11 @@ const News = () => {
     useEffect(() => {
         axios.request(options).then(function (response) {
             console.log(response.data);
-            setStories(response.data.items.result)
+            const temp_stories = response.data.items.result.filter((story, index)=>{
+                if(index<15)
+                return story;
+            })
+            setStories(temp_stories)
         }).catch(function (error) {
             console.error(error);
         });
