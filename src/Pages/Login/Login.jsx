@@ -47,9 +47,9 @@ const Login = ({user,handleLoginState}) => {
         try {
             const response = await axios.request(options);
             console.log(response.data.message);
-            toast.success(response.data.message);
+           
             console.log(response.data);
-            handleLoginState({username: response.data.username, id: response.data.id});
+            handleLoginState(response.data.user);
             navigate('/news');
           } catch (error) {
          console.log(error);

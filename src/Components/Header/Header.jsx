@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
 import './Header.scss'
 import logo from '../../Assets/Images/myfinance-logo.png'
+import CountUp from 'react-countup';
 const Header = ({user, handleLoginState}) => {
     const location = useLocation();
     
@@ -35,9 +36,15 @@ const Header = ({user, handleLoginState}) => {
                     </li>
                     <div className="nav__div">
                     {user&&
-                    <li className="nav__list-item">
+                    <>
+                    <li>
                         <Link to="/profile">{user.username}</Link>
                     </li>
+                    <li>
+                        {/* <h4>$ <CountUp start={user.money} end={user.new_money} onCompleteCallback={set} /></h4> */}
+                    </li>
+                    
+                    </>
                     }
                     </div>
                  </ul>

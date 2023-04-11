@@ -1,6 +1,7 @@
 @import '/src/Styles/Partials/variables';
 @import '/src/Styles/Partials/mixins';
 
+
 .stocks{
      
     width: 100%;
@@ -11,6 +12,37 @@
     align-items: center;
     
     
+    &__input{
+        box-shadow: 2px 2px 2px grey;
+        border-radius: 0.3rem;
+        text-indent: 0.5rem;
+        border: 0.0675rem solid grey;
+        transition: 0.5s;
+        &:focus{
+            outline: 0.0675rem solid $primary-color;
+            border: 0.0675rem solid $primary-color;
+           
+        }
+
+      }
+      &__search{
+        display: flex;
+        gap: 1rem;
+        margin: 0 0 0.5rem;
+      }
+      &__go{
+        background-color: $primary-color;
+        color : white;
+        border-radius: 0.3rem;
+        padding: 0.2rem;
+        border: none;
+        transition: 0.7s;
+        &:hover{
+            transform: scale(1.2);
+            cursor: pointer;
+
+        }
+      }
     &__dashboard{
         align-items: center;
         display: flex;
@@ -21,10 +53,10 @@
     }
     &__component{
        
-        width: 80%;
+        width: 77%;
         height: 40vh;
         border-radius: 0.25rem;
-        padding: 2rem;
+        padding: 2.6rem 0.7rem;
         
         @include card-component;
 
@@ -49,7 +81,7 @@
         outline: none;
         border: none;
         display: flex;
-
+        gap: 0.1rem;
         align-items: center;
         flex-direction: column;
         list-style-type: none;
@@ -60,12 +92,13 @@
     &__list-item{
         width: 100%;
         padding: 1rem 0;
-        border-bottom: 0.0675rem solid $platinum;
-        background-color: white;
-        color: $primary-color;
-        @include card-component;
 
-      
+        background-color: white;
+        color: $secondary-color;
+        @include card-component;
+        box-shadow: none;
+
+     
         &:hover{
             background-color: $primary-color;
             color: white;
@@ -73,12 +106,12 @@
             cursor: pointer;
             border-bottom: none;
             transform: perspective(10px) rotateX(1deg);
-            box-shadow: none;
-            box-shadow: none;
+       
        
         }
         &--selected{
             background-color: $primary-color;
+            opacity: 0.9;
             color: white;
             transition: 0.7s;
             cursor: pointer;
@@ -90,10 +123,56 @@
 
     }
 
+    &__actions{
+       
+        width: 30%;
+        display: flex;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    &__buy{
+        margin: 2rem 1rem 2rem 0;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        transition: 1s;
+        
+        h3{
+            color: $secondary-color;
+        }
+        &:hover{
+            background-color: green;
+            cursor: pointer;
+            h3{
+                color: white;
+            }
+        }
+    }
+    &__sell{
+        margin: 2rem 0;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        transition: 1s;
+        z-index: 1;
+        h3{
+            color: $secondary-color;
+        }
+        &:hover{
+            background-color: rgb(220, 29, 29);
+            cursor: pointer;
+            h3{
+                color: white;
+            }
+        }
+    }
     &__details{
         margin: 2rem 0;
         display: flex;
-        width:calc(70% + 1rem);
+        width:calc(80%);
         justify-content: space-between;
         flex-direction:column;
         gap: 1rem;
@@ -102,6 +181,7 @@
         min-width: 12%;
         @include card-component;
         border-radius:0.25rem;
+       
        
         padding: 1rem;
         &--neg{
@@ -131,14 +211,20 @@
     &__title{
         @include title;
     }
+    &__small-dashboard{
+        width:100%;
+        display: flex;
+        gap: 2rem
+
+    }
     @media (min-width: 65rem) {
        @include desktop-wrapper;
         &__details{
+
             flex-direction:row;
             gap: 1rem;
         }  
         &__dashboard{
-            
             
             display: flex;
             flex-direction:row;
@@ -146,7 +232,7 @@
             width: 100%;
             height: 30rem;
             gap: 2rem;
-            justify-content: space-between;
+            justify-content: space-between; 
         }
 
         }

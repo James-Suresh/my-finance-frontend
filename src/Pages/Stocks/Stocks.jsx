@@ -1,6 +1,5 @@
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import ReactCSSTransitionGroup from 'react-transition-group';
+import { AreaChart,Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './Stocks.scss';
 import {Animated} from "react-animated-css";
 import { useState, useEffect, useRef } from 'react';
@@ -8,6 +7,7 @@ import axios from 'axios';
 import CountUp from 'react-countup';
 import {AnimatePresence,motion} from "framer-motion"
 import Loading from '../../Components/Loading/Loading';
+import Modal from 'react-modal';
 const Stocks = () => {
     const [flip, setFlip] = useState(false)
     const stocks = ["aapl", "amzn", "meta", "goog", "nflx", "msft", "tsla", "uber"]
@@ -31,7 +31,13 @@ const Stocks = () => {
         }
     };
 
- 
+
+ const submitHandler = (e) => { 
+        e.preventDefault();
+        if(e.target.stock.value!="")
+        setStock(e.target.stock.value)
+        setFlip(!flip)
+ }  
 
     useEffect(() => {
         axios.request(options).then(function (response) {
@@ -56,12 +62,12 @@ const Stocks = () => {
             setData(date.map((item, index) => {
                 return {
                     date: item,
-                    Price: price[index].toFixed(2)
+                    Price: Number(price[index].toFixed(2))
                 }
             }))
 
             
-        
+      
             
         })
         
@@ -75,15 +81,28 @@ if(data&&stockInfo&&prevStockInfo)
                                                                     
         <div className='stocks'>
             <h1 className='stocks__title'>Stocks</h1>
+            <form className='stocks__search' onSubmit={submitHandler} action="submit">
+            <input className='stocks__input' name="stock" type="text" />
+            <button className='stocks__go'>GO</button>
+            </form>
             <div className='stocks__dashboard'>
-                <div className='stocks__component'>
-                    <ResponsiveContainer>
-                        <LineChart
+               
+                <div className='stocks__component' >
+                    <ResponsiveContainer >
+                        <AreaChart
 
                             data={data}>
+                                   <defs>
+                                       <linearGradient id="color_gradient" x1="0" y1="0" x2="0" y2="1">
+                                             <stop offset="5%" stopColor="#e76f51" stopOpacity={0.5}/>
+                                             <stop offset="95%" stopColor="#e76f51" stopOpacity={0}/>
+                                           </linearGradient>
+                                   </defs>
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="date" />
-                            <YAxis tickFormatter={(t) => {
+                            <XAxis dataKey="date"  />
+                            <YAxis  
+                            tickFormatter={(t) => {
+                                
                                 return `$${t}`
                             }
       }
@@ -96,11 +115,12 @@ if(data&&stockInfo&&prevStockInfo)
                             }}
                             />
                             <Legend />
-                            <Line type="monotone" dataKey="Price" stroke="#e76f51" activeDot={{ r: 8 }} />
-                        </LineChart>
+                            <Area type="monotone" dataKey="Price" stroke="#e76f51" fillOpacity={1} fill="url(#color_gradient)" activeDot={{ r: 8 }} />
+                        </AreaChart>
                     </ResponsiveContainer>
                     <button></button>
                 </div>
+                
                 <div className='stocks__list'>
                     <ul className='stocks__list-items'>
                         {stocks.map((stock) => {
@@ -120,67 +140,78 @@ if(data&&stockInfo&&prevStockInfo)
            
            
             </div>
-            <div className='stocks__details'>
+            <div className='stocks__small-dashboard'>
+               <div className='stocks__details'>
+                   
+                    <div className='stocks__card'>
+                    <AnimatePresence >
+                    {flip&&
+                     <motion.div
+                   
+                    animate={{rotateY:-360}}
+                    transition = {{duration:1}}
+                    exit={{rotateY:-360}}
+                   
+                    >
+                        <h3 className='stocks__card-title'>{current_stock.toUpperCase()}</h3>
+                   
+                    </motion.div>
+                    }
+                    {!flip&&
+                     <motion.div
+                   
+                    animate={{rotateY:360}}
+                    transition = {{duration:1}}
+                    exit={{rotateY:360}}
+                    >
+                        <h3 className='stocks__card-title'>{current_stock.toUpperCase()}</h3>
+                   
+                    </motion.div>
+                    }
+                    </AnimatePresence>
+                   
+                        <p className='stocks__card-body'>$
+                        <CountUp decimals={2} start={prevStockInfo.regularMarketPrice.raw} end={stockInfo.regularMarketPrice.raw} />
+                        </p>
+                   
+                    </div>
+                   
+                   
+                   
+                   
+                    <div className='stocks__card'>
+                        <h3 className='stocks__card-title'>Currency</h3>
+                        <p className='stocks__card-body'>USD</p>
+                    </div>
+                   
+                   
+                      <div className='stocks__card'>
+                        <h3 className='stocks__card-title'>Market Cap</h3>
+                        <p className='stocks__card-body'>$
+                        <CountUp start={prevStockInfo.marketCap.raw} end={stockInfo.marketCap.raw} />B
+                        </p>
+                    </div>
+                    <div className='stocks__card'>
+                        <h3 className='stocks__card-title'>Regular Market Change</h3>
+                        <p className={(stockInfo.regularMarketChangePercent.fmt.charAt(0)==="-")?"stocks__card--neg":"stocks__card--pos"}>
+                   
+                        <CountUp decimals={2} start={prevStockInfo.regularMarketChangePercent.raw} end={stockInfo.regularMarketChangePercent.raw} />
+                        %
+                        </p>
+                    </div>
+               </div>
                
-                <div className='stocks__card'>
-                <AnimatePresence >
-                {flip&&
-                 <motion.div
-                 
-                animate={{rotateY:-360}}
-                transition = {{duration:1}}
-                exit={{rotateY:-360}}
                
-                > 
-                    <h3 className='stocks__card-title'>{current_stock.toUpperCase()}</h3>
-                    
-                </motion.div> 
-                }
-                {!flip&&
-                 <motion.div
-                 
-                animate={{rotateY:360}}
-                transition = {{duration:1}}
-                exit={{rotateY:360}}
-                > 
-                    <h3 className='stocks__card-title'>{current_stock.toUpperCase()}</h3>
-                    
-                </motion.div> 
-                }
-                </AnimatePresence>
-                
-                    <p className='stocks__card-body'>$
-                    <CountUp decimals={2} start={prevStockInfo.regularMarketPrice.raw} end={stockInfo.regularMarketPrice.raw} />
-                    </p>
-                
-                </div>
-                
+               <div className='stocks__actions'>
+                   
+                   <div className='stocks__card stocks__buy'>
+                            <h3 className='stocks__card-title'>Buy</h3>
+                        </div>
+                        <div className='stocks__card stocks__sell'>
+                            <h3 className='stocks__card-title'>Sell</h3>
+                        </div>
+               </div>
 
-                
-                
-                
-                <div className='stocks__card'>
-                    <h3 className='stocks__card-title'>Currency</h3>
-                    <p className='stocks__card-body'>USD</p>
-                </div>
-               
-               
-                  <div className='stocks__card'>
-                    <h3 className='stocks__card-title'>Market Cap</h3>
-                    <p className='stocks__card-body'>$
-                    <CountUp start={prevStockInfo.marketCap.raw} end={stockInfo.marketCap.raw} />B
-                    </p>
-                </div>
-        
-                <div className='stocks__card'>
-                    <h3 className='stocks__card-title'>Regular Market Change</h3>
-                    <p className={(stockInfo.regularMarketChangePercent.fmt.charAt(0)==="-")?"stocks__card--neg":"stocks__card--pos"}>
-                    
-                    <CountUp decimals={2} start={prevStockInfo.regularMarketChangePercent.raw} end={stockInfo.regularMarketChangePercent.raw} />
-                    %
-                    </p>
-                </div>
-              
             </div>
 
         </div>

@@ -8,11 +8,22 @@ import Header from './Components/Header/Header';
 import Stocks from './Pages/Stocks/Stocks';
 import {useState} from 'react'
 import { motion, AnimatePresence } from "framer-motion";
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [user, setUser] = useState(null)
+
+  
   const handleLoginState = (user_info) =>{
-      setUser(user_info)
+    //user logged in
+    
+    if(user_info) 
+    toast.success("Login Successful")
+    else
+    toast.success("Logout Successful")
+
+    setUser(user_info)
   }
   
  
@@ -20,7 +31,8 @@ function App() {
     
     
   <div className="App">
-  
+    
+    <ToastContainer/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
     <BrowserRouter>
     <Header user={user} handleLoginState = {handleLoginState}/>
