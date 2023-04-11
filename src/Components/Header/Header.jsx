@@ -3,6 +3,7 @@ import './Header.scss'
 import logo from '../../Assets/Images/myfinance-logo.png'
 import CountUp from 'react-countup';
 import { color } from "@mui/system";
+import { orange } from "@mui/material/colors";
 const Header = ({user, handleLoginState, setUser, purchase,handleMoney2}) => {
     const location = useLocation();
     
@@ -39,12 +40,16 @@ const Header = ({user, handleLoginState, setUser, purchase,handleMoney2}) => {
                     {user&&
                     <>
                     <li>
-                        <Link to="/profile">{user.username}</Link>
+                        <Link
+                        className="nav__list-item nav__list-item--selected"
+                       style={ {color:"white", backgroundColor: "transparent"}}
+                        to="/profile">{user.username}</Link>
+                        
                     </li>
                     
                     <li>
-                        <h4
-                        style={ (purchase>0) ? { color :"green"} :{color:"white"} && (purchase<0) ? { color :"red"} :{color:"white"}}
+                        <h4 className="nav__list-item nav__list-item--selected"
+                        style={ (purchase>0) ? { color :"green"} :{color:"grey"} && (purchase<0) ? { color :"red"} :{color:"grey"}}
                         
                         >$ <CountUp
                         
