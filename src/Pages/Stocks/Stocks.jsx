@@ -44,7 +44,7 @@ const Stocks = ({handleMoney}) => {
     handleMoney(-1*stockInfo.regularMarketPrice.raw)
  }
  const handleSell = ()=>{
-    handleMoney(stockInfo.regularMarketPrice.raw)
+    handleMoney(1*stockInfo.regularMarketPrice.raw)
  }
 
 
