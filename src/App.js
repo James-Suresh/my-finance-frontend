@@ -17,22 +17,17 @@ function App() {
 
 
   const handleMoney2 =()=>{
-    if((purchase*-1)>0)
-    { 
-    const u = {...user}
-     u.money += purchase
-     setUser(u)
-     console.log(typeof(u.money))
-     setPurchase(0)
-    }
+    setPurchase(0)
+    
   }
   
 
   const handleMoney =(amt)=>{
     setPurchase(amt)
-    // const u = {...user}
-    // u.money += amt 
-    // setUser(...user,)
+    const u = {...user}
+    console.log(amt)
+    u.money += amt 
+     setUser(u)
   }
   const handleLoginState = (user_info) =>{
     //user logged in

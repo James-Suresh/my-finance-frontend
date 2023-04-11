@@ -49,7 +49,7 @@ const Header = ({user, handleLoginState, setUser, purchase,handleMoney2}) => {
                         >$ <CountUp
                         
                         start={user.money} end={(user.money+purchase)} onEnd={()=>{handleMoney2()
-                         setUser({...user,money:user.money+purchase})}} /></h4>
+                         setUser({...user,money:(user.money+purchase)})}} /></h4>
                     </li>
                     
                     </>
