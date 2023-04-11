@@ -10,18 +10,24 @@ import {useState} from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
+  const [user, setUser] = useState(null)
+  const handleLoginState = (user_info) =>{
+      setUser(user_info)
+  }
+  
  
   return (
+    
+    
   <div className="App">
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
     <BrowserRouter>
-    <Header>
+    <Header user={user} handleLoginState = {handleLoginState}/>
       
-    </Header>
     <AnimatePresence wait>
     <Routes>
-      <Route key={"/login"} path='/login' element ={<Login/>}/>
+      <Route key={"/login"} path='/login' element ={<Login user = {user}  handleLoginState = {handleLoginState}/>}/>
       <Route key={"/news"} path='/news' element = {<News/>}/>
       <Route key={"/home"} path='/' element = {<Navigate to='/news' />}/>
       <Route key={"/stocks"} path='/stocks' element = {<Stocks/>}/>

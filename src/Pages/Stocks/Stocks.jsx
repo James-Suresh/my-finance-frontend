@@ -17,11 +17,11 @@ const Stocks = () => {
             Price: 100
         }
     ];
-    const [current_stock, setStock] = useState("tsla")
+    const [current_stock, setStock] = useState("aapl")
     const [data, setData] = useState(null)
     const [stockInfo, setStockInfo] = useState(null)
     const [prevStockInfo, setPrevStockInfo] = useState(null);
-    const [previous_stock, setPreviousStock] = useState("tsla");
+    
     const options = {
         method: 'GET',
         url: `https://yahoo-finance127.p.rapidapi.com/price/${current_stock}`,
