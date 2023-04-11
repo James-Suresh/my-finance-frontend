@@ -182,7 +182,10 @@
         min-width: 12%;
         @include card-component;
         border-radius:0.25rem;
+          
        
+             
+
        
         padding: 1rem;
         &--neg{
@@ -194,12 +197,18 @@
             
             color: green;
             
-           
         }
         &:hover{
-            transform: scale(1.05);
-           
+            transform: scale(1.1);
+            cursor: default;     
         }
+        &--button{
+            cursor: pointer;
+            &:hover{
+                cursor: pointer;     
+            }
+        }
+
         
     }
     &__card-body{

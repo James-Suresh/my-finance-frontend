@@ -213,10 +213,10 @@ if(data&&stockInfo&&prevStockInfo)
                
                <div className='stocks__actions'>
                    
-                   <div className='stocks__card stocks__buy' onClick={handleBuy}>
+                   <div className='stocks__card stocks__card--button stocks__buy' onClick={handleBuy}>
                             <h3 className='stocks__card-title'>Buy</h3>
                         </div>
-                        <div className='stocks__card stocks__sell'>
+                        <div className='stocks__card stocks__card--button stocks__sell'>
                             <h3 className='stocks__card-title' onClick={handleSell}>Sell</h3>
                         </div>
                </div>
