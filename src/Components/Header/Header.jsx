@@ -2,7 +2,8 @@ import { Link, useLocation } from "react-router-dom"
 import './Header.scss'
 import logo from '../../Assets/Images/myfinance-logo.png'
 import CountUp from 'react-countup';
-const Header = ({user, handleLoginState}) => {
+import { color } from "@mui/system";
+const Header = ({user, handleLoginState, setUser, purchase,handleMoney2}) => {
     const location = useLocation();
     
     return (
@@ -40,8 +41,15 @@ const Header = ({user, handleLoginState}) => {
                     <li>
                         <Link to="/profile">{user.username}</Link>
                     </li>
+                    
                     <li>
-                        {/* <h4>$ <CountUp start={user.money} end={user.new_money} onCompleteCallback={set} /></h4> */}
+                        <h4
+                        style={ (purchase>0) ? { color :"green"} :{color:"white"} && (purchase<0) ? { color :"red"} :{color:"white"}}
+                        
+                        >$ <CountUp
+                        
+                        start={user.money} end={(user.money+purchase)} onEnd={()=>{handleMoney2()
+                         setUser({...user,money:user.money+purchase})}} /></h4>
                     </li>
                     
                     </>

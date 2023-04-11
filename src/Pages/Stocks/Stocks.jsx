@@ -8,7 +8,7 @@ import CountUp from 'react-countup';
 import {AnimatePresence,motion} from "framer-motion"
 import Loading from '../../Components/Loading/Loading';
 import Modal from 'react-modal';
-const Stocks = () => {
+const Stocks = ({handleMoney}) => {
     const [flip, setFlip] = useState(false)
     const stocks = ["aapl", "amzn", "meta", "goog", "nflx", "msft", "tsla", "uber"]
     const sample_data = [
@@ -38,6 +38,15 @@ const Stocks = () => {
         setStock(e.target.stock.value)
         setFlip(!flip)
  }  
+
+ const handleBuy = () =>{
+    
+    handleMoney(-1*stockInfo.regularMarketPrice.raw)
+ }
+ const handleSell = ()=>{
+    handleMoney(stockInfo.regularMarketPrice.raw)
+ }
+
 
     useEffect(() => {
         axios.request(options).then(function (response) {
@@ -204,11 +213,11 @@ if(data&&stockInfo&&prevStockInfo)
                
                <div className='stocks__actions'>
                    
-                   <div className='stocks__card stocks__buy'>
+                   <div className='stocks__card stocks__buy' onClick={handleBuy}>
                             <h3 className='stocks__card-title'>Buy</h3>
                         </div>
                         <div className='stocks__card stocks__sell'>
-                            <h3 className='stocks__card-title'>Sell</h3>
+                            <h3 className='stocks__card-title' onClick={handleSell}>Sell</h3>
                         </div>
                </div>
 

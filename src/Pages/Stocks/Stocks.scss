@@ -5,7 +5,7 @@
 .stocks{
      
     width: 100%;
-    min-height: 180vh;
+   
     margin: 2rem 2rem;
     display: flex;
     flex-direction: column;
@@ -44,6 +44,7 @@
         }
       }
     &__dashboard{
+        height: 100%;
         align-items: center;
         display: flex;
         flex-direction: column-reverse;
@@ -52,9 +53,9 @@
         justify-content: space-between;
     }
     &__component{
-       
+      
         width: 77%;
-        height: 40vh;
+        height: 22.5rem;
         border-radius: 0.25rem;
         padding: 2.6rem 0.7rem;
         
@@ -197,7 +198,7 @@
         }
         &:hover{
             transform: scale(1.05);
-            cursor:default
+           
         }
         
     }

@@ -13,8 +13,27 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [user, setUser] = useState(null)
+  const [purchase, setPurchase] = useState(0)
 
+
+  const handleMoney2 =()=>{
+    if((purchase*-1)>0)
+    { 
+    const u = {...user}
+     u.money += purchase
+     setUser(u)
+     console.log(typeof(u.money))
+     setPurchase(0)
+    }
+  }
   
+
+  const handleMoney =(amt)=>{
+    setPurchase(amt)
+    // const u = {...user}
+    // u.money += amt 
+    // setUser(...user,)
+  }
   const handleLoginState = (user_info) =>{
     //user logged in
     
@@ -35,14 +54,14 @@ function App() {
     <ToastContainer/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
     <BrowserRouter>
-    <Header user={user} handleLoginState = {handleLoginState}/>
+    <Header user={user} handleMoney2 ={handleMoney2} setUser = {setUser} purchase = {purchase} handleLoginState = {handleLoginState}/>
       
     <AnimatePresence wait>
     <Routes>
       <Route key={"/login"} path='/login' element ={<Login user = {user}  handleLoginState = {handleLoginState}/>}/>
       <Route key={"/news"} path='/news' element = {<News/>}/>
       <Route key={"/home"} path='/' element = {<Navigate to='/news' />}/>
-      <Route key={"/stocks"} path='/stocks' element = {<Stocks/>}/>
+      <Route key={"/stocks"} path='/stocks' element = {<Stocks handleMoney={handleMoney}/>}/>
     </Routes>
     </AnimatePresence>
     
