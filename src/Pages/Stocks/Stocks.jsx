@@ -7,8 +7,10 @@ import axios from 'axios';
 import CountUp from 'react-countup';
 import {AnimatePresence,motion} from "framer-motion"
 import Loading from '../../Components/Loading/Loading';
-import Modal from 'react-modal';
+import { ToastContainer, toast } from 'react-toastify';
+
 const Stocks = ({handleMoney}) => {
+    
     const [flip, setFlip] = useState(false)
     const stocks = ["aapl", "amzn", "meta", "goog", "nflx", "msft", "tsla", "uber"]
     const sample_data = [
@@ -40,10 +42,11 @@ const Stocks = ({handleMoney}) => {
  }  
 
  const handleBuy = () =>{
-    
+    toast.success("Purchased 1 stock of "+current_stock.toUpperCase())
     handleMoney(-1*stockInfo.regularMarketPrice.raw)
  }
  const handleSell = ()=>{
+    toast.success("Sold 1 stock of "+current_stock.toUpperCase())
     handleMoney(1*stockInfo.regularMarketPrice.raw)
  }
 
@@ -86,8 +89,9 @@ const Stocks = ({handleMoney}) => {
     }, [current_stock])
 if(data&&stockInfo&&prevStockInfo)
     return (
+        
         <Animated animationIn="fadeInUp" animationOut="fadeOut" isVisible={true}>
-                                                                    
+          {/* <ToastContainer hideProgressBar={true}/>                                                */}
         <div className='stocks'>
             <h1 className='stocks__title'>Stocks</h1>
             <form className='stocks__search' onSubmit={submitHandler} action="submit">
@@ -216,8 +220,8 @@ if(data&&stockInfo&&prevStockInfo)
                    <div className='stocks__card stocks__card--button stocks__buy' onClick={handleBuy}>
                             <h3 className='stocks__card-title'>Buy</h3>
                         </div>
-                        <div className='stocks__card stocks__card--button stocks__sell'>
-                            <h3 className='stocks__card-title' onClick={handleSell}>Sell</h3>
+                        <div className='stocks__card stocks__card--button stocks__sell' onClick={handleSell}>
+                            <h3 className='stocks__card-title' >Sell</h3>
                         </div>
                </div>
 

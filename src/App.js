@@ -46,7 +46,7 @@ function App() {
     
   <div className="App">
     
-    <ToastContainer/>
+    <ToastContainer hideProgressBar={true}/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
     <BrowserRouter>
     <Header user={user} handleMoney2 ={handleMoney2} setUser = {setUser} purchase = {purchase} handleLoginState = {handleLoginState}/>
