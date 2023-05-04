@@ -6,12 +6,12 @@
   font-family: 'Roboto';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  caret-color: transparent;
 
 }
+
 body{
-  width: 100%;
-  background-image: url('./Assets/Images/herringbone.webp');
+  width: 100%;background-color: #e1e1e1;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

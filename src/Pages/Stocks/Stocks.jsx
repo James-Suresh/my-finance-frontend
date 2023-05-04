@@ -107,8 +107,8 @@ if(data&&stockInfo&&prevStockInfo)
                             data={data}>
                                    <defs>
                                        <linearGradient id="color_gradient" x1="0" y1="0" x2="0" y2="1">
-                                             <stop offset="5%" stopColor="#e76f51" stopOpacity={0.5}/>
-                                             <stop offset="95%" stopColor="#e76f51" stopOpacity={0}/>
+                                             <stop offset="5%" stopColor="#8b0000" stopOpacity={0.5}/>
+                                             <stop offset="95%" stopColor="#8b0000" stopOpacity={0}/>
                                            </linearGradient>
                                    </defs>
                             <CartesianGrid strokeDasharray="3 3" />
